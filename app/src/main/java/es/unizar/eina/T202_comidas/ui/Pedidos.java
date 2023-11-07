@@ -1,23 +1,23 @@
 package es.unizar.eina.T202_comidas.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import es.unizar.eina.T202_comidas.database.Note;
 import es.unizar.eina.T202_comidas.R;
+import es.unizar.eina.T202_comidas.database.Note;
 
 /** Pantalla principal de la aplicación Notepad */
-public class Comidas extends AppCompatActivity {
+public class Pedidos extends AppCompatActivity {
     private NoteViewModel mNoteViewModel;
 
     public static final int ACTIVITY_CREATE = 1;
@@ -90,15 +90,15 @@ public class Comidas extends AppCompatActivity {
 
             switch (requestCode) {
                 case ACTIVITY_CREATE:
-                    Note newNote = new Note(extras.getString(NoteEdit.NOTE_TITLE)
-                            , extras.getString(NoteEdit.NOTE_BODY));
+                    Note newNote = new Note(extras.getString(PedidoEdit.NOTE_TITLE)
+                            , extras.getString(PedidoEdit.NOTE_BODY));
                     mNoteViewModel.insert(newNote);
                     break;
                 case ACTIVITY_EDIT:
 
-                    int id = extras.getInt(NoteEdit.NOTE_ID);
-                    Note updatedNote = new Note(extras.getString(NoteEdit.NOTE_TITLE)
-                            , extras.getString(NoteEdit.NOTE_BODY));
+                    int id = extras.getInt(PedidoEdit.NOTE_ID);
+                    Note updatedNote = new Note(extras.getString(PedidoEdit.NOTE_TITLE)
+                            , extras.getString(PedidoEdit.NOTE_BODY));
                     updatedNote.setId(id);
                     mNoteViewModel.update(updatedNote);
                     break;
@@ -125,16 +125,16 @@ public class Comidas extends AppCompatActivity {
     }
 
     private void createNote() {
-        Intent intent = new Intent(this, NoteEdit.class);
+        Intent intent = new Intent(this, PedidoEdit.class);
         startActivityForResult(intent, ACTIVITY_CREATE);
     }
 
 
     private void editNote(Note current) {
-        Intent intent = new Intent(this, NoteEdit.class);
-        intent.putExtra(NoteEdit.NOTE_TITLE, current.getTitle());
-        intent.putExtra(NoteEdit.NOTE_BODY, current.getBody());
-        intent.putExtra(NoteEdit.NOTE_ID, current.getId());
+        Intent intent = new Intent(this, PedidoEdit.class);
+        intent.putExtra(PedidoEdit.NOTE_TITLE, current.getTitle());
+        intent.putExtra(PedidoEdit.NOTE_BODY, current.getBody());
+        intent.putExtra(PedidoEdit.NOTE_ID, current.getId());
         startActivityForResult(intent, ACTIVITY_EDIT);
     }
 

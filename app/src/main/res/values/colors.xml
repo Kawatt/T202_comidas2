@@ -3,6 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorPRIMERO">#4CAF50</color>
+    <color name="colorSEGUNDO">#FF5722</color>
+    <color name="colorPOSTRE">#03A9F4</color>
+    <color name="colorSOLICITADO">#03A9F4</color>
+    <color name="colorPREPARADO">#FF5722</color>
+    <color name="colorRECOGIDO">#4CAF50</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="buttonLabel">#FFFFFF</color>
