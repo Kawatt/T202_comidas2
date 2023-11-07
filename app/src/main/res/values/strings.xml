@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Notepad</string>
+    <string name="app_name">T202_comidas</string>
     <string name="hint_title">Type title ...</string>
     <string name="hint_body">Type body ...</string>
     <string name="button_save">Save</string>

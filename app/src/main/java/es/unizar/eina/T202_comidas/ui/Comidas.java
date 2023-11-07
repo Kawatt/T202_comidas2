@@ -17,7 +17,7 @@ import es.unizar.eina.T202_comidas.database.Note;
 import es.unizar.eina.T202_comidas.R;
 
 /** Pantalla principal de la aplicación Notepad */
-public class Notepad extends AppCompatActivity {
+public class Comidas extends AppCompatActivity {
     private NoteViewModel mNoteViewModel;
 
     public static final int ACTIVITY_CREATE = 1;

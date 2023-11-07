@@ -37,8 +37,8 @@ class NoteViewHolder extends RecyclerView.ViewHolder implements View.OnCreateCon
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
         //super.onCreateContextMenu(menu, v, menuInfo);
-        menu.add(Menu.NONE, Notepad.DELETE_ID, Menu.NONE, R.string.menu_delete);
-        menu.add(Menu.NONE, Notepad.EDIT_ID, Menu.NONE, R.string.menu_edit);
+        menu.add(Menu.NONE, Comidas.DELETE_ID, Menu.NONE, R.string.menu_delete);
+        menu.add(Menu.NONE, Comidas.EDIT_ID, Menu.NONE, R.string.menu_edit);
     }
 
 
