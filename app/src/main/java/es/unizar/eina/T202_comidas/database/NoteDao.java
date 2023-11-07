@@ -1,4 +1,4 @@
-package es.unizar.eina.notepad.database;
+package es.unizar.eina.T202_comidas.database;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;

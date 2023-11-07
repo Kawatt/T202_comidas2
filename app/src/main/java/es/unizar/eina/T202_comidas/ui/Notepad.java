@@ -1,4 +1,4 @@
-package es.unizar.eina.notepad.ui;
+package es.unizar.eina.T202_comidas.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -13,8 +13,8 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import es.unizar.eina.notepad.database.Note;
-import es.unizar.eina.notepad.R;
+import es.unizar.eina.T202_comidas.database.Note;
+import es.unizar.eina.T202_comidas.R;
 
 /** Pantalla principal de la aplicación Notepad */
 public class Notepad extends AppCompatActivity {

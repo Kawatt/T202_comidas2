@@ -1,4 +1,4 @@
-package es.unizar.eina.notepad;
+package es.unizar.eina.T202_comidas;
 
 import org.junit.Test;
 
