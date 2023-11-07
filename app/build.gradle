@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace 'es.unizar.eina.notepad'
+    namespace 'es.unizar.eina.T202_comidas'
     compileSdk 34
 
     defaultConfig {
