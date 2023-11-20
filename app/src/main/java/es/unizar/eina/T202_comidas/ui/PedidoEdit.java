@@ -28,7 +28,7 @@ public class PedidoEdit extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_noteedit);
+        setContentView(R.layout.activity_pedidoedit);
 
         mTitleText = findViewById(R.id.title);
         mBodyText = findViewById(R.id.body);

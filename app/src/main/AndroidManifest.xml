@@ -16,6 +16,12 @@
             android:name=".ui.PedidoEdit"
             android:exported="false" />
         <activity
+            android:name=".ui.Pedidos"
+            android:exported="false" />
+        <activity
+            android:name=".ui.PlatoEdit"
+            android:exported="false" />
+        <activity
             android:name=".ui.Platos"
             android:exported="true">
             <intent-filter>
