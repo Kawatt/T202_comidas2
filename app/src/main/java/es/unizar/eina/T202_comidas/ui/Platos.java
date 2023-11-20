@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -33,6 +34,7 @@ public class Platos extends AppCompatActivity {
     NoteListAdapter mAdapter;
 
     FloatingActionButton mFab;
+    Button mPedidosButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,11 @@ public class Platos extends AppCompatActivity {
         mFab = findViewById(R.id.fab);
         mFab.setOnClickListener(view -> {
             createNote();
+        });
+
+        mPedidosButton = findViewById(R.id.pedidosboton);
+        mPedidosButton.setOnClickListener(view -> {
+            abrirPedidos();
         });
 
         // It doesn't affect if we comment the following instruction
@@ -91,15 +98,15 @@ public class Platos extends AppCompatActivity {
 
             switch (requestCode) {
                 case ACTIVITY_CREATE:
-                    Note newNote = new Note(extras.getString(PlatoEdit.NOTE_TITLE)
-                            , extras.getString(PlatoEdit.NOTE_BODY));
+                    Note newNote = new Note(extras.getString(PlatoEdit.PLATO_TITLE)
+                            , extras.getString(PlatoEdit.PLATO_BODY));
                     mNoteViewModel.insert(newNote);
                     break;
                 case ACTIVITY_EDIT:
 
-                    int id = extras.getInt(PlatoEdit.NOTE_ID);
-                    Note updatedNote = new Note(extras.getString(PlatoEdit.NOTE_TITLE)
-                            , extras.getString(PlatoEdit.NOTE_BODY));
+                    int id = extras.getInt(PlatoEdit.PLATO_ID);
+                    Note updatedNote = new Note(extras.getString(PlatoEdit.PLATO_TITLE)
+                            , extras.getString(PlatoEdit.PLATO_BODY));
                     updatedNote.setId(id);
                     mNoteViewModel.update(updatedNote);
                     break;
@@ -133,10 +140,15 @@ public class Platos extends AppCompatActivity {
 
     private void editNote(Note current) {
         Intent intent = new Intent(this, PlatoEdit.class);
-        intent.putExtra(PlatoEdit.NOTE_TITLE, current.getTitle());
-        intent.putExtra(PlatoEdit.NOTE_BODY, current.getBody());
-        intent.putExtra(PlatoEdit.NOTE_ID, current.getId());
+        intent.putExtra(PlatoEdit.PLATO_TITLE, current.getTitle());
+        intent.putExtra(PlatoEdit.PLATO_BODY, current.getBody());
+        intent.putExtra(PlatoEdit.PLATO_ID, current.getId());
         startActivityForResult(intent, ACTIVITY_EDIT);
+    }
+
+    private void abrirPedidos() {
+        Intent intent = new Intent(this, Pedidos.class);
+        startActivityForResult(intent, ACTIVITY_CREATE);
     }
 
 }

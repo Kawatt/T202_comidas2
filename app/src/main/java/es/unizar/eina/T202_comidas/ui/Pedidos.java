@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +35,8 @@ public class Pedidos extends AppCompatActivity {
 
     FloatingActionButton mFab;
 
+    Button mPlatosButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +56,11 @@ public class Pedidos extends AppCompatActivity {
         mFab = findViewById(R.id.fab);
         mFab.setOnClickListener(view -> {
             createNote();
+        });
+
+        mPlatosButton = findViewById(R.id.platosboton);
+        mPlatosButton.setOnClickListener(view -> {
+            abrirPlatos();
         });
 
         // It doesn't affect if we comment the following instruction
@@ -90,15 +98,15 @@ public class Pedidos extends AppCompatActivity {
 
             switch (requestCode) {
                 case ACTIVITY_CREATE:
-                    Note newNote = new Note(extras.getString(PedidoEdit.NOTE_TITLE)
-                            , extras.getString(PedidoEdit.NOTE_BODY));
+                    Note newNote = new Note(extras.getString(PedidoEdit.PEDIDO_TITLE)
+                            , extras.getString(PedidoEdit.PEDIDO_BODY));
                     mNoteViewModel.insert(newNote);
                     break;
                 case ACTIVITY_EDIT:
 
-                    int id = extras.getInt(PedidoEdit.NOTE_ID);
-                    Note updatedNote = new Note(extras.getString(PedidoEdit.NOTE_TITLE)
-                            , extras.getString(PedidoEdit.NOTE_BODY));
+                    int id = extras.getInt(PedidoEdit.PEDIDO_ID);
+                    Note updatedNote = new Note(extras.getString(PedidoEdit.PEDIDO_TITLE)
+                            , extras.getString(PedidoEdit.PEDIDO_BODY));
                     updatedNote.setId(id);
                     mNoteViewModel.update(updatedNote);
                     break;
@@ -132,10 +140,15 @@ public class Pedidos extends AppCompatActivity {
 
     private void editNote(Note current) {
         Intent intent = new Intent(this, PedidoEdit.class);
-        intent.putExtra(PedidoEdit.NOTE_TITLE, current.getTitle());
-        intent.putExtra(PedidoEdit.NOTE_BODY, current.getBody());
-        intent.putExtra(PedidoEdit.NOTE_ID, current.getId());
+        intent.putExtra(PedidoEdit.PEDIDO_TITLE, current.getTitle());
+        intent.putExtra(PedidoEdit.PEDIDO_BODY, current.getBody());
+        intent.putExtra(PedidoEdit.PEDIDO_ID, current.getId());
         startActivityForResult(intent, ACTIVITY_EDIT);
+    }
+
+    private void abrirPlatos() {
+        Intent intent = new Intent(this, Platos.class);
+        startActivityForResult(intent, ACTIVITY_CREATE);
     }
 
 }

@@ -13,9 +13,9 @@ import es.unizar.eina.T202_comidas.R;
 /** Pantalla utilizada para la creación o edición de una nota */
 public class PedidoEdit extends AppCompatActivity {
 
-    public static final String NOTE_TITLE = "pedido title";
-    public static final String NOTE_BODY = "body";
-    public static final String NOTE_ID = "id";
+    public static final String PEDIDO_TITLE = "pedido title";
+    public static final String PEDIDO_BODY = "body";
+    public static final String PEDIDO_ID = "id";
 
     private EditText mTitleText;
 
@@ -39,10 +39,10 @@ public class PedidoEdit extends AppCompatActivity {
             if (TextUtils.isEmpty(mTitleText.getText())) {
                 setResult(RESULT_CANCELED, replyIntent);
             } else {
-                replyIntent.putExtra(PedidoEdit.NOTE_TITLE, mTitleText.getText().toString());
-                replyIntent.putExtra(PedidoEdit.NOTE_BODY, mBodyText.getText().toString());
+                replyIntent.putExtra(PedidoEdit.PEDIDO_TITLE, mTitleText.getText().toString());
+                replyIntent.putExtra(PedidoEdit.PEDIDO_BODY, mBodyText.getText().toString());
                 if (mRowId!=null) {
-                    replyIntent.putExtra(PedidoEdit.NOTE_ID, mRowId.intValue());
+                    replyIntent.putExtra(PedidoEdit.PEDIDO_ID, mRowId.intValue());
                 }
                 setResult(RESULT_OK, replyIntent);
             }
@@ -57,9 +57,9 @@ public class PedidoEdit extends AppCompatActivity {
         mRowId = null;
         Bundle extras = getIntent().getExtras();
         if (extras!=null) {
-            mTitleText.setText(extras.getString(PedidoEdit.NOTE_TITLE));
-            mBodyText.setText(extras.getString(PedidoEdit.NOTE_BODY));
-            mRowId = extras.getInt(PedidoEdit.NOTE_ID);
+            mTitleText.setText(extras.getString(PedidoEdit.PEDIDO_TITLE));
+            mBodyText.setText(extras.getString(PedidoEdit.PEDIDO_BODY));
+            mRowId = extras.getInt(PedidoEdit.PEDIDO_ID);
         }
     }
 

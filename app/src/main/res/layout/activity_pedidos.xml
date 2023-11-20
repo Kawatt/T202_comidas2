@@ -31,33 +31,29 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/platos"
+        android:id="@+id/platosboton"
         android:layout_width="@dimen/half_width"
         android:layout_height="@dimen/button_height"
-        android:layout_marginBottom="668dp"
+        android:layout_marginBottom="652dp"
         android:text="@string/button_platos"
         android:textStyle="bold"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/pedidos"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/pedidosboton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/pedidos"
+        android:id="@+id/pedidosboton"
         android:layout_width="@dimen/half_width"
         android:layout_height="@dimen/button_height"
-        android:layout_marginBottom="668dp"
+        android:layout_marginBottom="652dp"
         android:text="@string/button_pedidos"
         android:textStyle="bold"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/platos"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toEndOf="@+id/platosboton"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
