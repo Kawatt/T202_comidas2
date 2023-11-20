@@ -14,12 +14,12 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import es.unizar.eina.T202_comidas.database.Note;
+import es.unizar.eina.T202_comidas.database.Plato;
 import es.unizar.eina.T202_comidas.R;
 
-/** Pantalla principal de la aplicación Notepad */
+/** Pantalla con la lista de Platos */
 public class Platos extends AppCompatActivity {
-    private NoteViewModel mNoteViewModel;
+    private PlatoViewModel mPlatoViewModel;
 
     public static final int ACTIVITY_CREATE = 1;
 
@@ -31,7 +31,7 @@ public class Platos extends AppCompatActivity {
 
     RecyclerView mRecyclerView;
 
-    NoteListAdapter mAdapter;
+    PlatoListAdapter mAdapter;
 
     FloatingActionButton mFab;
     Button mPedidosButton;
@@ -42,20 +42,20 @@ public class Platos extends AppCompatActivity {
         // Abre la pantalla:
         setContentView(R.layout.activity_platos);
         mRecyclerView = findViewById(R.id.recyclerview);
-        mAdapter = new NoteListAdapter(new NoteListAdapter.NoteDiff());
+        mAdapter = new PlatoListAdapter(new PlatoListAdapter.PlatoDiff());
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        mNoteViewModel = new ViewModelProvider(this).get(NoteViewModel.class);
+        mPlatoViewModel = new ViewModelProvider(this).get(PlatoViewModel.class);
 
-        mNoteViewModel.getAllNotes().observe(this, notes -> {
-            // Update the cached copy of the notes in the adapter.
-            mAdapter.submitList(notes);
+        mPlatoViewModel.getAllPlatos().observe(this, platos -> {
+            // Update the cached copy of the platos in the adapter.
+            mAdapter.submitList(platos);
         });
 
         mFab = findViewById(R.id.fab);
         mFab.setOnClickListener(view -> {
-            createNote();
+            createPlato();
         });
 
         mPedidosButton = findViewById(R.id.pedidosboton);
@@ -70,7 +70,7 @@ public class Platos extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         boolean result = super.onCreateOptionsMenu(menu);
-        menu.add(Menu.NONE, INSERT_ID, Menu.NONE, R.string.add_note);
+        menu.add(Menu.NONE, INSERT_ID, Menu.NONE, R.string.add_plato);
         return result;
     }
 
@@ -78,7 +78,7 @@ public class Platos extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case INSERT_ID:
-                createNote();
+                createPlato();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -98,17 +98,17 @@ public class Platos extends AppCompatActivity {
 
             switch (requestCode) {
                 case ACTIVITY_CREATE:
-                    Note newNote = new Note(extras.getString(PlatoEdit.PLATO_TITLE)
+                    Plato newPlato = new Plato(extras.getString(PlatoEdit.PLATO_TITLE)
                             , extras.getString(PlatoEdit.PLATO_BODY));
-                    mNoteViewModel.insert(newNote);
+                    mPlatoViewModel.insert(newPlato);
                     break;
                 case ACTIVITY_EDIT:
 
                     int id = extras.getInt(PlatoEdit.PLATO_ID);
-                    Note updatedNote = new Note(extras.getString(PlatoEdit.PLATO_TITLE)
+                    Plato updatedPlato = new Plato(extras.getString(PlatoEdit.PLATO_TITLE)
                             , extras.getString(PlatoEdit.PLATO_BODY));
-                    updatedNote.setId(id);
-                    mNoteViewModel.update(updatedNote);
+                    updatedPlato.setId(id);
+                    mPlatoViewModel.update(updatedPlato);
                     break;
             }
         }
@@ -116,29 +116,30 @@ public class Platos extends AppCompatActivity {
 
 
     public boolean onContextItemSelected(MenuItem item) {
-        Note current = mAdapter.getCurrent();
+        Plato current = mAdapter.getCurrent();
         switch (item.getItemId()) {
             case DELETE_ID:
                 Toast.makeText(
                         getApplicationContext(),
                         "Deleting " + current.getTitle(),
                         Toast.LENGTH_LONG).show();
-                mNoteViewModel.delete(current);
+                mPlatoViewModel.delete(current);
                 return true;
             case EDIT_ID:
-                editNote(current);
+                editPlato(current);
                 return true;
         }
         return super.onContextItemSelected(item);
     }
 
-    private void createNote() {
+    /** Viaja a la pantalla de edición de platos */
+    private void createPlato() {
         Intent intent = new Intent(this, PlatoEdit.class);
         startActivityForResult(intent, ACTIVITY_CREATE);
     }
 
-
-    private void editNote(Note current) {
+    /** Edita un plato */
+    private void editPlato(Plato current) {
         Intent intent = new Intent(this, PlatoEdit.class);
         intent.putExtra(PlatoEdit.PLATO_TITLE, current.getTitle());
         intent.putExtra(PlatoEdit.PLATO_BODY, current.getBody());
@@ -146,6 +147,7 @@ public class Platos extends AppCompatActivity {
         startActivityForResult(intent, ACTIVITY_EDIT);
     }
 
+    /** Viaja a la pantalla de pedidos */
     private void abrirPedidos() {
         Intent intent = new Intent(this, Pedidos.class);
         startActivityForResult(intent, ACTIVITY_CREATE);

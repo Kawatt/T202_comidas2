@@ -5,9 +5,9 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-/** Clase anotada como entidad que representa una nota y que consta de título y cuerpo */
-@Entity(tableName = "note")
-public class Note {
+/** Clase anotada como entidad que representa un plato y que consta de nombre, categoría y descripción */
+@Entity(tableName = "plato")
+public class Plato {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private int id;
@@ -19,27 +19,27 @@ public class Note {
     @ColumnInfo(name = "body")
     private String body;
 
-    public Note(@NonNull String title, String body) {
+    public Plato(@NonNull String title, String body) {
         this.title = title;
         this.body = body;
     }
 
-    /** Devuelve el identificador de la nota */
+    /** Devuelve el identificador del plato */
     public int getId(){
         return this.id;
     }
 
-    /** Permite actualizar el identificador de una nota */
+    /** Permite actualizar el identificador de un plato */
     public void setId(int id) {
         this.id = id;
     }
 
-    /** Devuelve el título de la nota */
+    /** Devuelve el título del plato */
     public String getTitle(){
         return this.title;
     }
 
-    /** Devuelve el cuerpo de la nota */
+    /** Devuelve el cuerpo del plato */
     public String getBody(){
         return this.body;
     }

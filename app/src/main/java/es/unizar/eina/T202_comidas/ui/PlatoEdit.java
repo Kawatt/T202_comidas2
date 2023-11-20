@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import es.unizar.eina.T202_comidas.R;
 
-/** Pantalla utilizada para la creación o edición de una nota */
+/** Pantalla utilizada para la creación o edición de un plato */
 public class PlatoEdit extends AppCompatActivity {
 
     public static final String PLATO_TITLE = "plato title";
@@ -53,6 +53,7 @@ public class PlatoEdit extends AppCompatActivity {
 
     }
 
+    /** Rellena los datos del plato */
     private void populateFields () {
         mRowId = null;
         Bundle extras = getIntent().getExtras();

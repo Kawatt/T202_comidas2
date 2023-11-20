@@ -10,7 +10,7 @@ import android.widget.EditText;
 
 import es.unizar.eina.T202_comidas.R;
 
-/** Pantalla utilizada para la creación o edición de una nota */
+/** Pantalla utilizada para la creación o edición de un pedido */
 public class PedidoEdit extends AppCompatActivity {
 
     public static final String PEDIDO_TITLE = "pedido title";
@@ -53,6 +53,7 @@ public class PedidoEdit extends AppCompatActivity {
 
     }
 
+    /** Rellena los datos del pedido */
     private void populateFields () {
         mRowId = null;
         Bundle extras = getIntent().getExtras();

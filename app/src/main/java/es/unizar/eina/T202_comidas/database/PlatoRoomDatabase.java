@@ -11,22 +11,22 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Note.class}, version = 1, exportSchema = false)
-public abstract class NoteRoomDatabase extends RoomDatabase {
+@Database(entities = {Plato.class}, version = 1, exportSchema = false)
+public abstract class PlatoRoomDatabase extends RoomDatabase {
 
-    public abstract NoteDao noteDao();
+    public abstract PlatoDao platoDao();
 
-    private static volatile NoteRoomDatabase INSTANCE;
+    private static volatile PlatoRoomDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    static NoteRoomDatabase getDatabase(final Context context) {
+    static PlatoRoomDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
-            synchronized (NoteRoomDatabase.class) {
+            synchronized (PlatoRoomDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                                    NoteRoomDatabase.class, "note_database")
+                                    PlatoRoomDatabase.class, "plato_database")
                             .addCallback(sRoomDatabaseCallback)
                             .build();
                 }
@@ -45,13 +45,13 @@ public abstract class NoteRoomDatabase extends RoomDatabase {
             databaseWriteExecutor.execute(() -> {
                 // Populate the database in the background.
                 // If you want to start with more notes, just add them.
-                NoteDao dao = INSTANCE.noteDao();
+                PlatoDao dao = INSTANCE.platoDao();
                 dao.deleteAll();
 
-                Note note = new Note("Plato 1", "Plato 1's body");
-                dao.insert(note);
-                note = new Note("Plato 2", "Plato 2's body");
-                dao.insert(note);
+                Plato plato = new Plato("Plato 1", "Plato 1's body");
+                dao.insert(plato);
+                plato = new Plato("Plato 2", "Plato 2's body");
+                dao.insert(plato);
             });
         }
     };

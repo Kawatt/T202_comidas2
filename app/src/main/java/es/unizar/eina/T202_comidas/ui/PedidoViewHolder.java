@@ -11,34 +11,34 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import es.unizar.eina.T202_comidas.R;
 
-class NoteViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
-    private final TextView mNoteItemView;
+class PedidoViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
+    private final TextView mPedidoItemView;
 
 
 
-    private NoteViewHolder(View itemView) {
+    private PedidoViewHolder(View itemView) {
         super(itemView);
-        mNoteItemView = itemView.findViewById(R.id.textView);
+        mPedidoItemView = itemView.findViewById(R.id.textView);
 
         itemView.setOnCreateContextMenuListener(this);
     }
 
     public void bind(String text) {
-        mNoteItemView.setText(text);
+        mPedidoItemView.setText(text);
     }
 
-    static NoteViewHolder create(ViewGroup parent) {
+    static PedidoViewHolder create(ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recyclerview_item, parent, false);
-        return new NoteViewHolder(view);
+        return new PedidoViewHolder(view);
     }
 
 
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
         //super.onCreateContextMenu(menu, v, menuInfo);
-        menu.add(Menu.NONE, Platos.DELETE_ID, Menu.NONE, R.string.menu_delete);
-        menu.add(Menu.NONE, Platos.EDIT_ID, Menu.NONE, R.string.menu_edit);
+        menu.add(Menu.NONE, Pedidos.DELETE_ID, Menu.NONE, R.string.menu_delete);
+        menu.add(Menu.NONE, Pedidos.EDIT_ID, Menu.NONE, R.string.menu_edit);
     }
 
 
