@@ -48,9 +48,9 @@ public abstract class NoteRoomDatabase extends RoomDatabase {
                 NoteDao dao = INSTANCE.noteDao();
                 dao.deleteAll();
 
-                Note note = new Note("Note 1's title", "Note 1's body");
+                Note note = new Note("Plato 1", "Plato 1's body");
                 dao.insert(note);
-                note = new Note("Note 2's title", "Note 2's body");
+                note = new Note("Plato 2", "Plato 2's body");
                 dao.insert(note);
             });
         }

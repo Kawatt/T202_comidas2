@@ -37,7 +37,8 @@ public class Platos extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notepad);
+        // Abre la pantalla:
+        setContentView(R.layout.activity_platos);
         mRecyclerView = findViewById(R.id.recyclerview);
         mAdapter = new NoteListAdapter(new NoteListAdapter.NoteDiff());
         mRecyclerView.setAdapter(mAdapter);
@@ -90,15 +91,15 @@ public class Platos extends AppCompatActivity {
 
             switch (requestCode) {
                 case ACTIVITY_CREATE:
-                    Note newNote = new Note(extras.getString(PedidoEdit.NOTE_TITLE)
-                            , extras.getString(PedidoEdit.NOTE_BODY));
+                    Note newNote = new Note(extras.getString(PlatoEdit.NOTE_TITLE)
+                            , extras.getString(PlatoEdit.NOTE_BODY));
                     mNoteViewModel.insert(newNote);
                     break;
                 case ACTIVITY_EDIT:
 
-                    int id = extras.getInt(PedidoEdit.NOTE_ID);
-                    Note updatedNote = new Note(extras.getString(PedidoEdit.NOTE_TITLE)
-                            , extras.getString(PedidoEdit.NOTE_BODY));
+                    int id = extras.getInt(PlatoEdit.NOTE_ID);
+                    Note updatedNote = new Note(extras.getString(PlatoEdit.NOTE_TITLE)
+                            , extras.getString(PlatoEdit.NOTE_BODY));
                     updatedNote.setId(id);
                     mNoteViewModel.update(updatedNote);
                     break;
@@ -125,16 +126,16 @@ public class Platos extends AppCompatActivity {
     }
 
     private void createNote() {
-        Intent intent = new Intent(this, PedidoEdit.class);
+        Intent intent = new Intent(this, PlatoEdit.class);
         startActivityForResult(intent, ACTIVITY_CREATE);
     }
 
 
     private void editNote(Note current) {
-        Intent intent = new Intent(this, PedidoEdit.class);
-        intent.putExtra(PedidoEdit.NOTE_TITLE, current.getTitle());
-        intent.putExtra(PedidoEdit.NOTE_BODY, current.getBody());
-        intent.putExtra(PedidoEdit.NOTE_ID, current.getId());
+        Intent intent = new Intent(this, PlatoEdit.class);
+        intent.putExtra(PlatoEdit.NOTE_TITLE, current.getTitle());
+        intent.putExtra(PlatoEdit.NOTE_BODY, current.getBody());
+        intent.putExtra(PlatoEdit.NOTE_ID, current.getId());
         startActivityForResult(intent, ACTIVITY_EDIT);
     }
 

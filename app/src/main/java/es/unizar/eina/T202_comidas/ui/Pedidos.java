@@ -37,7 +37,7 @@ public class Pedidos extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notepad);
+        setContentView(R.layout.activity_pedidos);
         mRecyclerView = findViewById(R.id.recyclerview);
         mAdapter = new NoteListAdapter(new NoteListAdapter.NoteDiff());
         mRecyclerView.setAdapter(mAdapter);

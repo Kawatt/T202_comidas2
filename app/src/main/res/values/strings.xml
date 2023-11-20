@@ -9,4 +9,6 @@
     <string name="menu_edit">Edit Note</string>
     <string name="title">Title</string>
     <string name="body">Body</string>
+    <string name="button_platos">Platos</string>
+    <string name="button_pedidos">Pedidos</string>
 </resources>
