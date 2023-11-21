@@ -26,7 +26,7 @@ public interface PedidoDao {
     @Query("DELETE FROM Pedido")
     void deleteAll();
 
-    @Query("SELECT * FROM Pedido ORDER BY title ASC")
+    @Query("SELECT * FROM Pedido ORDER BY cliente ASC")
     LiveData<List<Pedido>> getOrderedPedidos();
 }
 

@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -98,15 +99,16 @@ public class Pedidos extends AppCompatActivity {
 
             switch (requestCode) {
                 case ACTIVITY_CREATE:
-                    Pedido newPedido = new Pedido(extras.getString(PedidoEdit.PEDIDO_TITLE)
-                            , extras.getString(PedidoEdit.PEDIDO_BODY));
+                    Pedido newPedido = new Pedido(Pedido.Estado.SOLICITADO, extras.getString(PedidoEdit.PEDIDO_CLIENTE),
+                            PedidoEdit.PEDIDO_NUMTELEFONO, PedidoEdit.PEDIDO_TIEMPORECOGIDA,
+                            PedidoEdit.PEDIDO_NUMRACIONES, 0 , PedidoEdit.PEDIDO_PRECIO);
                     mPedidoViewModel.insert(newPedido);
                     break;
                 case ACTIVITY_EDIT:
-
                     int id = extras.getInt(PedidoEdit.PEDIDO_ID);
-                    Pedido updatedPedido = new Pedido(extras.getString(PedidoEdit.PEDIDO_TITLE)
-                            , extras.getString(PedidoEdit.PEDIDO_BODY));
+                    Pedido updatedPedido = new Pedido(Pedido.Estado.SOLICITADO, extras.getString(PedidoEdit.PEDIDO_CLIENTE),
+                            PedidoEdit.PEDIDO_NUMTELEFONO, PedidoEdit.PEDIDO_TIEMPORECOGIDA,
+                            PedidoEdit.PEDIDO_NUMRACIONES, 0 , PedidoEdit.PEDIDO_PRECIO);
                     updatedPedido.setId(id);
                     mPedidoViewModel.update(updatedPedido);
                     break;
@@ -121,7 +123,7 @@ public class Pedidos extends AppCompatActivity {
             case DELETE_ID:
                 Toast.makeText(
                         getApplicationContext(),
-                        "Deleting " + current.getTitle(),
+                        "Deleting " + current.getCliente(),
                         Toast.LENGTH_LONG).show();
                 mPedidoViewModel.delete(current);
                 return true;
@@ -141,8 +143,8 @@ public class Pedidos extends AppCompatActivity {
     /** Edita un pedido */
     private void editPedido(Pedido current) {
         Intent intent = new Intent(this, PedidoEdit.class);
-        intent.putExtra(PedidoEdit.PEDIDO_TITLE, current.getTitle());
-        intent.putExtra(PedidoEdit.PEDIDO_BODY, current.getBody());
+        intent.putExtra(PedidoEdit.PEDIDO_CLIENTE, current.getCliente());
+        intent.putExtra(PedidoEdit.PEDIDO_CLIENTE, current.getCliente());
         intent.putExtra(PedidoEdit.PEDIDO_ID, current.getId());
         startActivityForResult(intent, ACTIVITY_EDIT);
     }

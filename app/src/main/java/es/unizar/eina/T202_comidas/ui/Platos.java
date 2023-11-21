@@ -98,15 +98,15 @@ public class Platos extends AppCompatActivity {
 
             switch (requestCode) {
                 case ACTIVITY_CREATE:
-                    Plato newPlato = new Plato(extras.getString(PlatoEdit.PLATO_TITLE)
-                            , extras.getString(PlatoEdit.PLATO_BODY));
+                    Plato newPlato = new Plato(extras.getString(PlatoEdit.PLATO_NOMBRE),
+                            PlatoEdit.PLATO_CATEGORIA, extras.getString(PlatoEdit.PLATO_DESCRIPCION));
                     mPlatoViewModel.insert(newPlato);
                     break;
                 case ACTIVITY_EDIT:
 
                     int id = extras.getInt(PlatoEdit.PLATO_ID);
-                    Plato updatedPlato = new Plato(extras.getString(PlatoEdit.PLATO_TITLE)
-                            , extras.getString(PlatoEdit.PLATO_BODY));
+                    Plato updatedPlato = new Plato(extras.getString(PlatoEdit.PLATO_NOMBRE),
+                            PlatoEdit.PLATO_CATEGORIA, extras.getString(PlatoEdit.PLATO_DESCRIPCION));
                     updatedPlato.setId(id);
                     mPlatoViewModel.update(updatedPlato);
                     break;
@@ -121,7 +121,7 @@ public class Platos extends AppCompatActivity {
             case DELETE_ID:
                 Toast.makeText(
                         getApplicationContext(),
-                        "Deleting " + current.getTitle(),
+                        "Deleting " + current.getNombre(),
                         Toast.LENGTH_LONG).show();
                 mPlatoViewModel.delete(current);
                 return true;
@@ -141,8 +141,8 @@ public class Platos extends AppCompatActivity {
     /** Edita un plato */
     private void editPlato(Plato current) {
         Intent intent = new Intent(this, PlatoEdit.class);
-        intent.putExtra(PlatoEdit.PLATO_TITLE, current.getTitle());
-        intent.putExtra(PlatoEdit.PLATO_BODY, current.getBody());
+        intent.putExtra(PlatoEdit.PLATO_NOMBRE, current.getNombre());
+        intent.putExtra(PlatoEdit.PLATO_DESCRIPCION, current.getDescripcion());
         intent.putExtra(PlatoEdit.PLATO_ID, current.getId());
         startActivityForResult(intent, ACTIVITY_EDIT);
     }

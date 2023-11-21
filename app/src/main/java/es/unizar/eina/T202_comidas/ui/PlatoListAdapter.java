@@ -37,7 +37,7 @@ public class PlatoListAdapter extends ListAdapter<Plato, PlatoViewHolder> {
     public void onBindViewHolder(PlatoViewHolder holder, int position) {
 
         Plato current = getItem(position);
-        holder.bind(current.getTitle());
+        holder.bind(current.getNombre());
 
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -61,7 +61,7 @@ public class PlatoListAdapter extends ListAdapter<Plato, PlatoViewHolder> {
         public boolean areContentsTheSame(@NonNull Plato oldItem, @NonNull Plato newItem) {
             //android.util.Log.d ( "PlatoDiff" , "areContentsTheSame " + oldItem.getTitle() + " vs " + newItem.getTitle() + " " + oldItem.getTitle().equals(newItem.getTitle()));
             // We are just worried about differences in visual representation, i.e. changes in the title
-            return oldItem.getTitle().equals(newItem.getTitle());
+            return oldItem.getNombre().equals(newItem.getNombre());
         }
     }
 }

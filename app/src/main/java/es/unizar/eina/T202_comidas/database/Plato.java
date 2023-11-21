@@ -8,20 +8,30 @@ import androidx.room.PrimaryKey;
 /** Clase anotada como entidad que representa un plato y que consta de nombre, categoría y descripción */
 @Entity(tableName = "plato")
 public class Plato {
+
+    public enum Categoria {
+        PRIMERO, SEGUNDO, POSTRE
+    }
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private int id;
 
     @NonNull
-    @ColumnInfo(name = "title")
-    private String title;
+    @ColumnInfo(name = "nombre")
+    private String nombre;
 
-    @ColumnInfo(name = "body")
-    private String body;
+    @NonNull
+    @ColumnInfo(name = "categoria")
+    private Categoria categoria;
 
-    public Plato(@NonNull String title, String body) {
-        this.title = title;
-        this.body = body;
+    @NonNull
+    @ColumnInfo(name = "descripcion")
+    private String descripcion;
+
+    public Plato(@NonNull String nombre, @NonNull Categoria categoria, String descripcion) {
+        this.nombre = nombre;
+        this.categoria = categoria;
+        this.descripcion = descripcion;
     }
 
     /** Devuelve el identificador del plato */
@@ -34,14 +44,19 @@ public class Plato {
         this.id = id;
     }
 
-    /** Devuelve el título del plato */
-    public String getTitle(){
-        return this.title;
+    /** Devuelve el nombre del plato */
+    public String getNombre(){
+        return this.nombre;
     }
 
-    /** Devuelve el cuerpo del plato */
-    public String getBody(){
-        return this.body;
+    /** Devuelve la categoría del plato */
+    public Categoria getCategoria(){
+        return this.categoria;
+    }
+
+    /** Devuelve la descripcion del plato */
+    public String getDescripcion(){
+        return this.descripcion;
     }
 
 }

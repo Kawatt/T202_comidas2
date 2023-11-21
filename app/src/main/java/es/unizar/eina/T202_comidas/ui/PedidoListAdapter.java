@@ -37,7 +37,7 @@ public class PedidoListAdapter extends ListAdapter<Pedido, PedidoViewHolder> {
     public void onBindViewHolder(PedidoViewHolder holder, int position) {
 
         Pedido current = getItem(position);
-        holder.bind(current.getTitle());
+        holder.bind(current.getCliente());
 
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -61,7 +61,7 @@ public class PedidoListAdapter extends ListAdapter<Pedido, PedidoViewHolder> {
         public boolean areContentsTheSame(@NonNull Pedido oldItem, @NonNull Pedido newItem) {
             //android.util.Log.d ( "PedidoDiff" , "areContentsTheSame " + oldItem.getTitle() + " vs " + newItem.getTitle() + " " + oldItem.getTitle().equals(newItem.getTitle()));
             // We are just worried about differences in visual representation, i.e. changes in the title
-            return oldItem.getTitle().equals(newItem.getTitle());
+            return oldItem.getCliente().equals(newItem.getCliente());
         }
     }
 }
