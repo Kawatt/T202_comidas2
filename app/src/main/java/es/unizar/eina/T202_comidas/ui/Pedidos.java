@@ -106,7 +106,7 @@ public class Pedidos extends AppCompatActivity {
                     break;
                 case ACTIVITY_EDIT:
                     int id = extras.getInt(PedidoEdit.PEDIDO_ID);
-                    Pedido updatedPedido = new Pedido(extras.getClass(PedidoEdit.PEDIDO_ESTADO), extras.getString(PedidoEdit.PEDIDO_CLIENTE),
+                    Pedido updatedPedido = new Pedido(Pedido.Estado.SOLICITADO, extras.getString(PedidoEdit.PEDIDO_CLIENTE),
                             PedidoEdit.PEDIDO_NUMTELEFONO, PedidoEdit.PEDIDO_TIEMPORECOGIDA,
                             PedidoEdit.PEDIDO_NUMRACIONES, PedidoEdit.PEDIDO_PRECIO);
                     updatedPedido.setId(id);

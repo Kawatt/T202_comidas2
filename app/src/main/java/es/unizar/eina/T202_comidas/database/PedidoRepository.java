@@ -8,7 +8,6 @@ import androidx.lifecycle.LiveData;
 import java.util.List;
 
 public class PedidoRepository {
-
     private PedidoDao mPedidoDao;
     private LiveData<List<Pedido>> mAllPedidos;
 
