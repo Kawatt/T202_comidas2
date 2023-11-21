@@ -14,17 +14,9 @@ public class Pedido {
     public enum Estado {
         SOLICITADO, PREPARADO, RECOGIDO
     }
-
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private int id;
-
-    //@NonNull
-    //@ColumnInfo(name = "title")
-    //private String title;
-
-    //@ColumnInfo(name = "body")
-    //private String body;
 
     @NonNull
     @ColumnInfo(name = "estado")
@@ -40,26 +32,26 @@ public class Pedido {
 
     @NonNull
     @ColumnInfo(name = "tiempo_recogida")
-    private int tiempoRecogida;
+    private long tiempoRecogida;
 
     @NonNull
     @ColumnInfo(name = "raciones")
     private int numRaciones;
 
-    @ColumnInfo(name = "platos")
-    private int platos;
+    //@ColumnInfo(name = "platos")
+    //private int platos;
+    //private Set<Plato> platos;
     @NonNull
-    @ColumnInfo(name = "precio")
-    private int precio;
+    @ColumnInfo(name = "precioTotal")
+    private double precioTotal;
 
-    public Pedido(Estado estado, @NonNull String cliente, @NonNull int numTelefono, @NonNull int tiempoRecogida, @NonNull int numRaciones,int platos, @NonNull int precio) {
+    public Pedido(Estado estado, @NonNull String cliente, @NonNull int numTelefono, @NonNull long tiempoRecogida, @NonNull int numRaciones, @NonNull int precioTotal) {
         this.estado = estado;
         this.cliente = cliente;
         this.numTelefono = numTelefono;
         this.tiempoRecogida = tiempoRecogida;
         this.numRaciones = numRaciones;
-        this.platos = platos;
-        this.precio = precio;
+        this.precioTotal = precioTotal;
     }
 
     /** Devuelve el identificador del pedido */
@@ -88,7 +80,7 @@ public class Pedido {
     }
 
     /** Devuelve la fecha y hora de recogida del pedido */
-    public int getTiempoRecogida(){
+    public long getTiempoRecogida(){
         return this.tiempoRecogida;
     }
 
@@ -98,13 +90,13 @@ public class Pedido {
     }
 
     /** Devuelve los platos del pedido */
-    public int getPlatos(){
-        return this.platos;
-    }
+    //public int getPlatos(){
+        //return this.platos;
+    //}
 
     /** Devuelve el precio del pedido */
-    public int getPrecio(){
-        return this.precio;
+    public double getPrecioTotal(){
+        return this.precioTotal;
     }
 
 }

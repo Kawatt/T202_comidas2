@@ -101,14 +101,14 @@ public class Pedidos extends AppCompatActivity {
                 case ACTIVITY_CREATE:
                     Pedido newPedido = new Pedido(Pedido.Estado.SOLICITADO, extras.getString(PedidoEdit.PEDIDO_CLIENTE),
                             PedidoEdit.PEDIDO_NUMTELEFONO, PedidoEdit.PEDIDO_TIEMPORECOGIDA,
-                            PedidoEdit.PEDIDO_NUMRACIONES, 0 , PedidoEdit.PEDIDO_PRECIO);
+                            PedidoEdit.PEDIDO_NUMRACIONES, PedidoEdit.PEDIDO_PRECIO);
                     mPedidoViewModel.insert(newPedido);
                     break;
                 case ACTIVITY_EDIT:
                     int id = extras.getInt(PedidoEdit.PEDIDO_ID);
-                    Pedido updatedPedido = new Pedido(Pedido.Estado.SOLICITADO, extras.getString(PedidoEdit.PEDIDO_CLIENTE),
+                    Pedido updatedPedido = new Pedido(extras.getClass(PedidoEdit.PEDIDO_ESTADO), extras.getString(PedidoEdit.PEDIDO_CLIENTE),
                             PedidoEdit.PEDIDO_NUMTELEFONO, PedidoEdit.PEDIDO_TIEMPORECOGIDA,
-                            PedidoEdit.PEDIDO_NUMRACIONES, 0 , PedidoEdit.PEDIDO_PRECIO);
+                            PedidoEdit.PEDIDO_NUMRACIONES, PedidoEdit.PEDIDO_PRECIO);
                     updatedPedido.setId(id);
                     mPedidoViewModel.update(updatedPedido);
                     break;

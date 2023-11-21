@@ -48,9 +48,9 @@ public abstract class PedidoRoomDatabase extends RoomDatabase {
                 PedidoDao dao = INSTANCE.pedidoDao();
                 dao.deleteAll();
 
-                Pedido pedido = new Pedido(Pedido.Estado.SOLICITADO, "Cliente 1", 111111111, 1, 1, 0, 1);
+                Pedido pedido = new Pedido(Pedido.Estado.SOLICITADO, "Cliente 1", 111111111, 1 /*new TiempoRecogida(1, 1, 1, 1, 1)*/, 0, 1);
                 dao.insert(pedido);
-                pedido = new Pedido(Pedido.Estado.SOLICITADO, "Cliente 2", 222222222, 1, 1, 0 ,1 );
+                pedido = new Pedido(Pedido.Estado.SOLICITADO, "Cliente 2", 222222222, 1 /*new TiempoRecogida(1, 1, 1, 1, 1)*/, 0 ,1 );
                 dao.insert(pedido);
             });
         }

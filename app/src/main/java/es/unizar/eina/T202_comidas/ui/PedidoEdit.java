@@ -16,10 +16,10 @@ import es.unizar.eina.T202_comidas.database.TiempoRecogida;
 /** Pantalla utilizada para la creación o edición de un pedido */
 public class PedidoEdit extends AppCompatActivity {
     public static final String PEDIDO_ID = "id";
-    public static final Pedido.Estado PEDIDO_ESTADO = Pedido.Estado.SOLICITADO;
+    public static final String PEDIDO_ESTADO = "a";
     public static final String PEDIDO_CLIENTE = "cliente nombre";
     public static final int PEDIDO_NUMTELEFONO = 0;
-    public static final int PEDIDO_TIEMPORECOGIDA = 1;
+    public static final int PEDIDO_TIEMPORECOGIDA = 1;//new TiempoRecogida(1, 1, 1, 1, 1);
     public static final int PEDIDO_NUMRACIONES = 0;
     public static final int PEDIDO_PRECIO = 0;
 
@@ -65,7 +65,7 @@ public class PedidoEdit extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras!=null) {
             mTitleText.setText(extras.getString(PedidoEdit.PEDIDO_CLIENTE));
-            mBodyText.setText(extras.getString(PedidoEdit.PEDIDO_CLIENTE)); // ESTE ERA BODY
+            //mBodyText.setText(extras.getString(PedidoEdit.PEDIDO_CLIENTE)); // ESTE ERA BODY
             mRowId = extras.getInt(PedidoEdit.PEDIDO_ID);
         }
     }
