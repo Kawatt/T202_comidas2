@@ -26,7 +26,7 @@ public abstract class PlatoRoomDatabase extends RoomDatabase {
             synchronized (PlatoRoomDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                                    PlatoRoomDatabase.class, "plato_database")
+                                    PlatoRoomDatabase.class, "plato_database") //Juntar databases
                             .addCallback(sRoomDatabaseCallback)
                             .build();
                 }

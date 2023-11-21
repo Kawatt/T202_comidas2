@@ -45,7 +45,7 @@ public class Pedido {
     @ColumnInfo(name = "precioTotal")
     private double precioTotal;
 
-    public Pedido(Estado estado, @NonNull String cliente, @NonNull int numTelefono, @NonNull long tiempoRecogida, @NonNull int numRaciones, @NonNull int precioTotal) {
+    public Pedido(Estado estado, @NonNull String cliente, @NonNull int numTelefono, @NonNull long tiempoRecogida, @NonNull int numRaciones, @NonNull double precioTotal) {
         this.estado = estado;
         this.cliente = cliente;
         this.numTelefono = numTelefono;

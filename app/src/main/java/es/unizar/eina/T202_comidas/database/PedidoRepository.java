@@ -27,9 +27,9 @@ public class PedidoRepository {
         return mAllPedidos;
     }
 
-    /** Inserta una nota
+    /** Inserta un pedido
      * @param pedido
-     * @return un valor entero largo con el identificador de la nota que se ha creado.
+     * @return un valor entero largo con el identificador del pedido que se ha creado.
      */
     public long insert(Pedido pedido) {
         final long[] result = {0};

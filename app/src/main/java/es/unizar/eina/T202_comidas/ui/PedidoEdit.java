@@ -19,9 +19,9 @@ public class PedidoEdit extends AppCompatActivity {
     public static final String PEDIDO_ESTADO = "a";
     public static final String PEDIDO_CLIENTE = "cliente nombre";
     public static final int PEDIDO_NUMTELEFONO = 0;
-    public static final int PEDIDO_TIEMPORECOGIDA = 1;//new TiempoRecogida(1, 1, 1, 1, 1);
+    public static final long PEDIDO_TIEMPORECOGIDA = 200312091200l;//new TiempoRecogida(1, 1, 1, 1, 1);
     public static final int PEDIDO_NUMRACIONES = 0;
-    public static final int PEDIDO_PRECIO = 0;
+    public static final double PEDIDO_PRECIO = 0.0;
 
     private EditText mTitleText;
 
@@ -34,6 +34,7 @@ public class PedidoEdit extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Pantalla a utilizar
         setContentView(R.layout.activity_pedidoedit);
 
         mTitleText = findViewById(R.id.title);
