@@ -99,14 +99,18 @@ public class Platos extends AppCompatActivity {
             switch (requestCode) {
                 case ACTIVITY_CREATE:
                     Plato newPlato = new Plato(extras.getString(PlatoEdit.PLATO_NOMBRE),
-                            PlatoEdit.PLATO_CATEGORIA, extras.getString(PlatoEdit.PLATO_DESCRIPCION));
+                            Plato.Categoria.POSTRE/*(Plato.Categoria)extras.getSerializable(PlatoEdit.PLATO_CATEGORIA)*/,
+                            extras.getString(PlatoEdit.PLATO_DESCRIPCION),
+                            extras.getDouble(PlatoEdit.PLATO_PRECIO));
                     mPlatoViewModel.insert(newPlato);
                     break;
                 case ACTIVITY_EDIT:
 
                     int id = extras.getInt(PlatoEdit.PLATO_ID);
                     Plato updatedPlato = new Plato(extras.getString(PlatoEdit.PLATO_NOMBRE),
-                            PlatoEdit.PLATO_CATEGORIA, extras.getString(PlatoEdit.PLATO_DESCRIPCION));
+                            Plato.Categoria.POSTRE/*(Plato.Categoria)extras.getSerializable(PlatoEdit.PLATO_CATEGORIA)*/,
+                            extras.getString(PlatoEdit.PLATO_DESCRIPCION),
+                            extras.getDouble(PlatoEdit.PLATO_PRECIO));
                     updatedPlato.setId(id);
                     mPlatoViewModel.update(updatedPlato);
                     break;
@@ -143,7 +147,9 @@ public class Platos extends AppCompatActivity {
         Intent intent = new Intent(this, PlatoEdit.class);
         intent.putExtra(PlatoEdit.PLATO_NOMBRE, current.getNombre());
         intent.putExtra(PlatoEdit.PLATO_DESCRIPCION, current.getDescripcion());
+        intent.putExtra(PlatoEdit.PLATO_CATEGORIA, current.getCategoria());
         intent.putExtra(PlatoEdit.PLATO_ID, current.getId());
+        intent.putExtra(PlatoEdit.PLATO_PRECIO, current.getPrecio());
         startActivityForResult(intent, ACTIVITY_EDIT);
     }
 

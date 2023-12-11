@@ -2,7 +2,7 @@
     <string name="app_name">T202_comidas</string>
     <string name="hint_title">Type title ...</string>
     <string name="hint_body">Type body ...</string>
-    <string name="button_save">Save</string>
+    <string name="button_save">Guardar</string>
     <string name="empty_not_saved">Note not saved because title is empty.</string>
     <string name="add_plato">Add plato</string>
     <string name="add_pedido">Add pedido</string>
@@ -12,4 +12,19 @@
     <string name="body">Body</string>
     <string name="button_platos">Platos</string>
     <string name="button_pedidos">Pedidos</string>
+    <string name="name">Nombre</string>
+    <string name="description">Descripción</string>
+    <string name="category">Categoría</string>
+    <string name="price">Precio</string>
+    <string name="client">Cliente</string>
+    <string name="estate">Estado</string>
+    <string name="phone_number">Número de Teléfono</string>
+    <string name="pick_up_date">Fecha de Recogida</string>
+    <string name="pick_up_hour">Hora de Recogida</string>
+    <string name="number_of_rations">Número de Raciones</string>
+    <string name="hint_name">Escribe el nombre…</string>
+    <string name="hint_description">Escribe la descripción…</string>
+    <string name="hint_price">0.00</string>
+    <string name="hint_client">Escribe el nombre del cliente…</string>
+    <string name="hint_phone_number">000000000</string>
 </resources>

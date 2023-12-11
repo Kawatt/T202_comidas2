@@ -28,10 +28,15 @@ public class Plato {
     @ColumnInfo(name = "descripcion")
     private String descripcion;
 
-    public Plato(@NonNull String nombre, @NonNull Categoria categoria, String descripcion) {
+    @NonNull
+    @ColumnInfo(name = "precio")
+    private double precio;
+
+    public Plato(@NonNull String nombre, @NonNull Categoria categoria, @NonNull String descripcion, @NonNull double precio) {
         this.nombre = nombre;
         this.categoria = categoria;
         this.descripcion = descripcion;
+        this.precio = precio;
     }
 
     /** Devuelve el identificador del plato */
@@ -57,6 +62,11 @@ public class Plato {
     /** Devuelve la descripcion del plato */
     public String getDescripcion(){
         return this.descripcion;
+    }
+
+    /** Devuelve el precio del plato */
+    public double getPrecio(){
+        return this.precio;
     }
 
 }

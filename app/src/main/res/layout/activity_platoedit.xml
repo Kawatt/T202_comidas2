@@ -1,56 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-
-
-    <LinearLayout android:orientation="horizontal"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:padding="@dimen/small_padding">
 
-        <TextView android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/title"
-            android:layout_margin="@dimen/big_padding"
-            android:textSize="18sp" />
-        <EditText
-            android:id="@+id/title"
+        <LinearLayout android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="@dimen/min_height"
-            android:fontFamily="sans-serif-light"
-            android:hint="@string/hint_title"
-            android:inputType="textAutoComplete"
+            android:layout_margin="@dimen/small_padding">
+
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:layout_margin="@dimen/small_padding"
+                android:textSize="18sp" />
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/min_height"
+                android:fontFamily="sans-serif-light"
+                android:hint="@string/hint_name"
+                android:inputType="textAutoComplete"
+                android:layout_margin="@dimen/small_padding"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small_padding">
+
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/category"
+                android:layout_margin="@dimen/small_padding"
+                android:textSize="18sp" />
+            <Spinner android:id="@+id/category"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:minHeight="@dimen/button_height"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-light"
+                android:layout_margin="@dimen/small_padding"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <LinearLayout android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small_padding">
+
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/description"
+                android:layout_margin="@dimen/small_padding"
+                android:textSize="18sp" />
+            <EditText android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:scrollbars="vertical"
+                android:fontFamily="sans-serif-light"
+                android:hint="@string/hint_description"
+                android:inputType="textMultiLine"
+                android:layout_margin="@dimen/small_padding"
+                android:textSize="18sp"
+                android:minLines="10"
+                android:maxLines="10" />
+        </LinearLayout>
+
+        <LinearLayout android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small_padding">
+
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/price"
+                android:layout_margin="@dimen/small_padding"
+                android:textSize="18sp" />
+            <RelativeLayout android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/small_padding">
+
+                <EditText android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="@string/hint_price"
+                    android:inputType="numberDecimal"
+                    android:textSize="18sp"
+                    android:minHeight="@dimen/min_height"
+                    android:minWidth="@dimen/min_height"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/price"
+                    android:minHeight="@dimen/min_height"
+                    android:src="@drawable/baseline_euro_24"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="@string/button_save"
             android:layout_margin="@dimen/big_padding"
-            android:textSize="18sp" />
+            android:minHeight="@dimen/button_height"
+            android:textColor="@color/buttonLabel"/>
+
     </LinearLayout>
-
-    <TextView android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/body"
-        android:layout_margin="@dimen/big_padding"
-        android:textSize="18sp" />
-    <EditText android:id="@+id/body"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:scrollbars="vertical"
-        android:fontFamily="sans-serif-light"
-        android:hint="@string/hint_body"
-        android:inputType="textAutoComplete"
-        android:layout_margin="@dimen/big_padding"
-        android:textSize="18sp" />
-
-
-    <Button
-        android:id="@+id/button_save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:text="@string/button_save"
-        android:layout_margin="@dimen/big_padding"
-        android:textColor="@color/buttonLabel" />
-
-</LinearLayout>
+</ScrollView>

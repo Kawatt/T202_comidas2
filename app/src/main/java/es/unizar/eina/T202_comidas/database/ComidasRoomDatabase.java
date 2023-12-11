@@ -11,22 +11,23 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Pedido.class}, version = 1, exportSchema = false)
-public abstract class PedidoRoomDatabase extends RoomDatabase {
+@Database(entities = {Pedido.class, Plato.class}, version = 1, exportSchema = false)
+public abstract class ComidasRoomDatabase extends RoomDatabase {
 
     public abstract PedidoDao pedidoDao();
+    public abstract PlatoDao platoDao();
 
-    private static volatile PedidoRoomDatabase INSTANCE;
+    private static volatile ComidasRoomDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    static PedidoRoomDatabase getDatabase(final Context context) {
+    static ComidasRoomDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
-            synchronized (PedidoRoomDatabase.class) {
+            synchronized (ComidasRoomDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                                    PedidoRoomDatabase.class, "pedido_database")
+                                    ComidasRoomDatabase.class, "comida_database")
                             .addCallback(sRoomDatabaseCallback)
                             .build();
                 }
@@ -45,13 +46,21 @@ public abstract class PedidoRoomDatabase extends RoomDatabase {
             databaseWriteExecutor.execute(() -> {
                 // Populate the database in the background.
                 // If you want to start with more notes, just add them.
-                PedidoDao dao = INSTANCE.pedidoDao();
-                dao.deleteAll();
+                PlatoDao platodao = INSTANCE.platoDao();
+                PedidoDao pedidodao = INSTANCE.pedidoDao();
+                platodao.deleteAll();
+                pedidodao.deleteAll();
 
+                Plato plato = new Plato("Espagueti", Plato.Categoria.PRIMERO, "Espagueti a la carbonara", 25);
+                platodao.insert(plato);
+                plato = new Plato("Pescado", Plato.Categoria.SEGUNDO, "Filete de pescado", 10);
+                platodao.insert(plato);
+                plato = new Plato("Fondue de fresas", Plato.Categoria.POSTRE, "Chocolate fundido con fresas", 5.66);
+                platodao.insert(plato);
                 Pedido pedido = new Pedido(Pedido.Estado.SOLICITADO, "Cliente 1", 111111111, 1 /*new TiempoRecogida(1, 1, 1, 1, 1)*/, 0, 1);
-                dao.insert(pedido);
+                pedidodao.insert(pedido);
                 pedido = new Pedido(Pedido.Estado.SOLICITADO, "Cliente 2", 222222222, 1 /*new TiempoRecogida(1, 1, 1, 1, 1)*/, 0 ,1 );
-                dao.insert(pedido);
+                pedidodao.insert(pedido);
             });
         }
     };
